@@ -92,38 +92,50 @@ public class AddressBook {
 		int response = promptInt("Choose a search type: ", 1, 4);
 		String searchTerm = prompt("Enter your search: ");
 		//switch to execute the user's desired action
+		boolean empty = true;
 		for (Address entry: addresses) {
 			switch (response) {
 			case 1:
 				if (entry.getFirstName().equals(searchTerm)) {
 					printEntry(entry);
+					empty = false;
 				}
 				continue;
 			case 2:
 				if (entry.getLastName().equals(searchTerm)) {
 					printEntry(entry);
+					empty = false;
 				}
 				continue;
 			case 3:
 				if (entry.getPhone().equals(searchTerm)) {
 					printEntry(entry);
+					empty = false;
 				}
 				continue;
 			case 4:
 				if (entry.getEmail().equals(searchTerm)) {
 					printEntry(entry);
+					empty = false;
 				}
 				continue;
 			default:
 				break;
 			}
 		}
+		if (empty) {
+			System.out.println("No entries found.");
+		}
 
 	}
 	
 	private static void printAddresses() {
-		for (Address entry: addresses) {
-			printEntry(entry);
+		if (addresses.isEmpty()) {
+			System.out.println("Address book is empty!");
+		} else {
+			for (Address entry: addresses) {
+				printEntry(entry);
+			}
 		}
 	}
 	
