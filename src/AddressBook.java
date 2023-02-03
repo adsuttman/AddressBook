@@ -57,9 +57,12 @@ public class AddressBook {
 		String lastName = prompt("Last Name: ");
 		String phone = prompt("Phone Number: ");
 		String email = prompt("Email Address: ");
-		addresses.add(new Address(firstName, lastName, phone, email));
-		System.out.println("Added new entry!");
-		
+		if (checkEmail(email)) {
+			System.out.println("An entry with that email already exists!");
+		} else {
+			addresses.add(new Address(firstName, lastName, phone, email));
+			System.out.println("Added new entry!");
+		}
 	}
 	
 	private static void removeEntry() {
@@ -134,6 +137,7 @@ public class AddressBook {
 	private static void printEntry(Address entry) {
 		System.out.println("************\n" + entry + "************\n");
 	}
+	
 	private static boolean checkEmail(String email) {
 		for (Address entry: addresses) {
 			if (entry.getEmail().equals(email)) {
@@ -142,6 +146,7 @@ public class AddressBook {
 		}
 		return false;
 	}
+	
 	//prompt methods
 	private static String prompt(String question) {
 		while (true) {
