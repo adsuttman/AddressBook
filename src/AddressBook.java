@@ -96,25 +96,25 @@ public class AddressBook {
 		for (Address entry: addresses) {
 			switch (response) {
 			case 1:
-				if (entry.getFirstName().equals(searchTerm)) {
+				if (entry.getFirstName().contains(searchTerm)) {
 					printEntry(entry);
 					empty = false;
 				}
 				continue;
 			case 2:
-				if (entry.getLastName().equals(searchTerm)) {
+				if (entry.getLastName().contains(searchTerm)) {
 					printEntry(entry);
 					empty = false;
 				}
 				continue;
 			case 3:
-				if (entry.getPhone().equals(searchTerm)) {
+				if (entry.getPhone().contains(searchTerm)) {
 					printEntry(entry);
 					empty = false;
 				}
 				continue;
 			case 4:
-				if (entry.getEmail().equals(searchTerm)) {
+				if (entry.getEmail().contains(searchTerm)) {
 					printEntry(entry);
 					empty = false;
 				}
