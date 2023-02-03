@@ -75,6 +75,7 @@ public class AddressBook {
 				break;
 			}
 		}
+		System.out.println("No entry with that email found.");
 	}
 	
 	private static void search() {
