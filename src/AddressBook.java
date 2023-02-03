@@ -67,15 +67,19 @@ public class AddressBook {
 	
 	private static void removeEntry() {
 		String email = prompt("Enter an entry's email to remove: ");
+		boolean found = false;
 		for (Address entry: addresses) {
 			if (entry.getEmail().equals(email)) {
 				System.out.println("Deleted the following entry: ");
 				printEntry(entry);
 				addresses.remove(entry);
+				found = true;
 				break;
 			}
 		}
+		if (!found) {
 		System.out.println("No entry with that email found.");
+		}
 	}
 	
 	private static void search() {
