@@ -44,7 +44,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "First Name: " + firstName + "\nLast Name: " + lastName + "\nPhone Number: " + phone + "\nEmail Address:" + email
+		return "First Name: " + firstName + "\nLast Name: " + lastName + "\nPhone Number: " + phone + "\nEmail Address: " + email
 				+ "\n";
 	}
 	

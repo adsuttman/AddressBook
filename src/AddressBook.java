@@ -24,6 +24,7 @@ public class AddressBook {
 				addEntry();
 				break;
 			case 2:
+				removeEntry();
 				break;
 			case 3:
 				break;
@@ -51,12 +52,24 @@ public class AddressBook {
 	
 	private static void addEntry() {
 		String firstName = prompt("First Name: ");
-		String lastName = prompt("First Name: ");
+		String lastName = prompt("Last Name: ");
 		String phone = prompt("Phone Number: ");
 		String email = prompt("Email Address: ");
 		addresses.add(new Address(firstName, lastName, phone, email));
 		System.out.println("Added new entry!");
 		
+	}
+	
+	private static void removeEntry() {
+		String email = prompt("Enter an entry's email to remove: ");
+		for (Address entry: addresses) {
+			if (entry.getEmail().equals(email)) {
+				System.out.println("Deleted the following entry: ");
+				printEntry(entry);
+				addresses.remove(entry);
+				break;
+			}
+		}
 	}
 	
 	private static void printAddresses() {
