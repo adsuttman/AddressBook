@@ -33,6 +33,7 @@ public class AddressBook {
 				printAddresses();
 				break;
 			case 5:
+				deleteBook();
 				break;
 			case 6:
 				quit();
@@ -117,6 +118,11 @@ public class AddressBook {
 			printEntry(entry);
 		}
 	}
+	
+	private static void deleteBook() {
+		addresses.clear();
+	}
+	
 	//helper methods
 	private static void printEntry(Address entry) {
 		System.out.println("************\n" + entry + "************\n");
