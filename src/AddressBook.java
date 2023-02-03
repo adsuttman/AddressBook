@@ -27,6 +27,7 @@ public class AddressBook {
 				removeEntry();
 				break;
 			case 3:
+				search();
 				break;
 			case 4:
 				printAddresses();
@@ -37,7 +38,7 @@ public class AddressBook {
 				quit();
 			default:
 				break;
-		}
+			}
 		}
 
 
@@ -72,6 +73,45 @@ public class AddressBook {
 		}
 	}
 	
+	private static void search() {
+		//Print menu
+		System.out.println("\n1) First Name\n"
+				+ "2) Last Name\n"
+				+ "3) Phone Number\n"
+				+ "4) Email Address\n");
+		//prompt user for selection
+		int response = promptInt("Choose a search type: ", 1, 4);
+		String searchTerm = prompt("Enter your search: ");
+		//switch to execute the user's desired action
+		for (Address entry: addresses) {
+			switch (response) {
+			case 1:
+				if (entry.getFirstName().equals(searchTerm)) {
+					printEntry(entry);
+				}
+				continue;
+			case 2:
+				if (entry.getLastName().equals(searchTerm)) {
+					printEntry(entry);
+				}
+				continue;
+			case 3:
+				if (entry.getPhone().equals(searchTerm)) {
+					printEntry(entry);
+				}
+				continue;
+			case 4:
+				if (entry.getEmail().equals(searchTerm)) {
+					printEntry(entry);
+				}
+				continue;
+			default:
+				break;
+			}
+		}
+
+	}
+	
 	private static void printAddresses() {
 		for (Address entry: addresses) {
 			printEntry(entry);
@@ -80,6 +120,14 @@ public class AddressBook {
 	//helper methods
 	private static void printEntry(Address entry) {
 		System.out.println("************\n" + entry + "************\n");
+	}
+	private static boolean checkEmail(String email) {
+		for (Address entry: addresses) {
+			if (entry.getEmail().equals(email)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	//prompt methods
 	private static String prompt(String question) {
