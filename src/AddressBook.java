@@ -120,7 +120,14 @@ public class AddressBook {
 	}
 	
 	private static void deleteBook() {
-		addresses.clear();
+		String response = prompt("This will delete all of your entries!\nAre you sure? y/n");
+		if (response.toLowerCase().startsWith("y")) {
+			addresses.clear();
+			System.out.println("Address boook cleared!");
+		} else {
+			System.out.println("Ok, returning to menu...");
+		}
+
 	}
 	
 	//helper methods
