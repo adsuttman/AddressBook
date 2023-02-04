@@ -1,3 +1,6 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.StringJoiner;
 
 public class Address {
 	private String firstName;
@@ -40,6 +43,15 @@ public class Address {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public void saveToFile(FileWriter file) throws IOException {
+		StringJoiner data = new StringJoiner(",", "", "\n");
+		data.add(firstName);
+		data.add(lastName);
+		data.add(phone);
+		data.add(email);
+		file.append(data.toString());
 	}
 
 	@Override

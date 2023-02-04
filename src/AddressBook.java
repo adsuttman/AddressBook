@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,9 +17,11 @@ public class AddressBook {
 					+ "3) Search for a specific entry\n"
 					+ "4) Print Address Book\n"
 					+ "5) Delete Book\n"
-					+ "6) Quit\n");
+					+ "6) Save to File\n"
+					+ "7) Load from File\n"
+					+ "8) Quit\n");
 			//prompt user for selection
-			int response = promptInt("Please choose what you'd like to do with the database:", 1, 6);
+			int response = promptInt("Please choose what you'd like to do with the database:", 1, 8);
 			//switch to execute the user's desired action
 			switch (response) {
 			case 1:
@@ -36,6 +40,12 @@ public class AddressBook {
 				deleteBook();
 				break;
 			case 6:
+				save();
+				break;
+			case 7:
+				load();
+				break;
+			case 8:
 				quit();
 			default:
 				break;
@@ -43,6 +53,31 @@ public class AddressBook {
 		}
 
 
+	}
+	//file manipulation methods
+	private static void save() {
+		String fileName = prompt("Enter name of file to save to: ");
+		
+		try {
+			FileWriter file = new FileWriter(fileName);
+			try {
+				for (Address entry : addresses) {
+					entry.saveToFile(file);
+				}
+				System.out.println("Successfully saved to " + fileName);
+			} finally {
+				file.close();	
+			}
+
+			
+		} catch (IOException e) {
+			System.err.println("An error occured!\n"+ e);
+		} 
+		
+	}
+	
+	private static void load() {
+		
 	}
 
 	//menu methods
