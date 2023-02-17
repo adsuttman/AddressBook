@@ -81,7 +81,7 @@ public class AddressBook {
 	}
 	
 	private static void load() {
-		if(confirm("This will delete your current data!")) {
+		if(confirm("This will delete your current data!\nAre you sure?")) {
 			String fileName = prompt("Enter name of file to load from: ");
 			
 			try {
@@ -112,6 +112,9 @@ public class AddressBook {
 
 	//menu methods
 	private static void quit() {
+		if(confirm("Do you want to save before quitting?")) {
+			save();
+		}
 		System.out.println("Address book closed");
 		System.exit(0);
 	}
@@ -204,7 +207,7 @@ public class AddressBook {
 	}
 	
 	private static void deleteBook() {
-		if (confirm("This will delete all of your entries!")) {
+		if (confirm("This will delete all of your entries!\nAre you sure?")) {
 			addresses.clear();
 			System.out.println("Address boook cleared!");
 		} else {
@@ -227,8 +230,8 @@ public class AddressBook {
 		return false;
 	}
 	
-	private static boolean confirm(String warning) {
-		String response = prompt(warning + "\nAre you sure? y/n");
+	private static boolean confirm(String message) {
+		String response = prompt(message + "\ny/n");
 		return response.toLowerCase().startsWith("y");
 	}
 	
