@@ -81,31 +81,32 @@ public class AddressBook {
 	}
 	
 	private static void load() {
-		String fileName = prompt("Enter name of file to load from: ");
-		
-		try {
-			BufferedReader file = new BufferedReader(new FileReader(fileName));
-			try {
-				int c;
-				StringBuilder fullData = new StringBuilder();
-				while((c=file.read()) != -1) {
-					fullData.append((char)c);
-				}
-				//System.out.println(fullData);
-				addresses.clear();
-				for(String data : fullData.toString().split("\n")) {
-					String[] entry = data.split(DELIMITER);
-					addresses.add(new Address(entry));
-				}
-				System.out.println("Successfully loaded from " + fileName);
-				
-			} finally {
-				file.close();	
-			}
-
+		if(confirm("This will delete your current data!")) {
+			String fileName = prompt("Enter name of file to load from: ");
 			
-		} catch (IOException e) {
-			System.err.println("An error occured!\n"+ e);
+			try {
+				BufferedReader file = new BufferedReader(new FileReader(fileName));
+				try {
+					int c;
+					StringBuilder fullData = new StringBuilder();
+					while((c=file.read()) != -1) {
+						fullData.append((char)c);
+					}
+					//System.out.println(fullData);
+					addresses.clear();
+					for(String data : fullData.toString().split("\n")) {
+						String[] entry = data.split(DELIMITER);
+						addresses.add(new Address(entry));
+					}
+					System.out.println("Successfully loaded from " + fileName);
+				} finally {
+					file.close();	
+				}
+			} catch (IOException e) {
+				System.err.println("An error occured!\n"+ e);
+			}
+		} else {
+			System.out.println("Ok, returning to menu...");
 		}
 	}
 
@@ -113,7 +114,6 @@ public class AddressBook {
 	private static void quit() {
 		System.out.println("Address book closed");
 		System.exit(0);
-		
 	}
 	
 	private static void addEntry() {
@@ -142,7 +142,7 @@ public class AddressBook {
 			}
 		}
 		if (!found) {
-		System.out.println("No entry with that email found.");
+			System.out.println("No entry with that email found.");
 		}
 	}
 	
