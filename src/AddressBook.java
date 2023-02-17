@@ -242,6 +242,8 @@ public class AddressBook {
 			String result = input.nextLine();
 			if (result.isEmpty()) {
 				System.out.println("Please enter something!");
+			} else if (result.contains(DELIMITER)) {
+				System.out.println("Your response can't contain " + DELIMITER);
 			} else {
 				return result;
 			}
