@@ -13,6 +13,13 @@ public class Address {
 		this.phone = phone;
 		this.email = email;
 	}
+	
+	public Address(String[] data) {
+		this.firstName = data[0];
+		this.lastName = data[2];
+		this.phone = data[4];
+		this.email = data[6];
+	}
 
 	//Getters and Setters
 	public String getFirstName() {

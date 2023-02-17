@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,7 +81,32 @@ public class AddressBook {
 	}
 	
 	private static void load() {
+		String fileName = prompt("Enter name of file to load from: ");
 		
+		try {
+			BufferedReader file = new BufferedReader(new FileReader(fileName));
+			try {
+				int c;
+				StringBuilder fullData = new StringBuilder();
+				while((c=file.read()) != -1) {
+					fullData.append((char)c);
+				}
+				//System.out.println(fullData);
+				addresses.clear();
+				for(String data : fullData.toString().split("\n")) {
+					String[] entry = data.split(DELIMITER);
+					addresses.add(new Address(entry));
+				}
+				System.out.println("Successfully loaded from " + fileName);
+				
+			} finally {
+				file.close();	
+			}
+
+			
+		} catch (IOException e) {
+			System.err.println("An error occured!\n"+ e);
+		}
 	}
 
 	//menu methods
