@@ -204,8 +204,7 @@ public class AddressBook {
 	}
 	
 	private static void deleteBook() {
-		String response = prompt("This will delete all of your entries!\nAre you sure? y/n");
-		if (response.toLowerCase().startsWith("y")) {
+		if (confirm("This will delete all of your entries!")) {
 			addresses.clear();
 			System.out.println("Address boook cleared!");
 		} else {
@@ -228,7 +227,12 @@ public class AddressBook {
 		return false;
 	}
 	
-	//prompt methods
+	private static boolean confirm(String warning) {
+		String response = prompt(warning + "\nAre you sure? y/n");
+		return response.toLowerCase().startsWith("y");
+	}
+	
+	//prompt methods (copied from MadLib project)
 	private static String prompt(String question) {
 		while (true) {
 			System.out.println(question);
