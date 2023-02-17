@@ -1,5 +1,3 @@
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.StringJoiner;
 
 public class Address {
@@ -45,13 +43,14 @@ public class Address {
 		this.email = email;
 	}
 	
-	public void saveToFile(FileWriter file) throws IOException {
-		StringJoiner data = new StringJoiner(",", "", "\n");
+
+	public String formatData(String delimiter) {
+		StringJoiner data = new StringJoiner(delimiter, "", "\n");
 		data.add(firstName);
 		data.add(lastName);
 		data.add(phone);
 		data.add(email);
-		file.append(data.toString());
+		return data.toString();
 	}
 
 	@Override

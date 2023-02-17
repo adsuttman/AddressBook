@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class AddressBook {
 	static List<Address> addresses = new ArrayList<Address>();
 	static Scanner input = new Scanner(System.in);
+	static final String DELIMITER = "|";
 	
 	
 	public static void main(String[] args) {
@@ -62,7 +63,7 @@ public class AddressBook {
 			FileWriter file = new FileWriter(fileName);
 			try {
 				for (Address entry : addresses) {
-					entry.saveToFile(file);
+					file.append(entry.formatData(DELIMITER));
 				}
 				System.out.println("Successfully saved to " + fileName);
 			} finally {
