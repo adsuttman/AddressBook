@@ -1,3 +1,4 @@
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class AddressBook {
 		String fileName = prompt("Enter name of file to save to: ");
 		
 		try {
-			FileWriter file = new FileWriter(fileName);
+			BufferedWriter file = new BufferedWriter(new FileWriter(fileName));
 			try {
 				for (Address entry : addresses) {
 					file.append(entry.formatData(DELIMITER));
