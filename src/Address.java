@@ -16,9 +16,9 @@ public class Address {
 	
 	public Address(String[] data) {
 		this.firstName = data[0];
-		this.lastName = data[2];
-		this.phone = data[4];
-		this.email = data[6];
+		this.lastName = data[1];
+		this.phone = data[2];
+		this.email = data[3];
 	}
 
 	//Getters and Setters

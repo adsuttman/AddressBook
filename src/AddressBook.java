@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class AddressBook {
 	static List<Address> addresses = new ArrayList<Address>();
 	static Scanner input = new Scanner(System.in);
-	static final String DELIMITER = "|";
+	static final String DELIMITER = ",";
 	
 	
 	public static void main(String[] args) {
@@ -95,7 +95,13 @@ public class AddressBook {
 					//System.out.println(fullData);
 					addresses.clear();
 					for(String data : fullData.toString().split("\n")) {
+						//System.out.println("Data = " + data);
 						String[] entry = data.split(DELIMITER);
+//						for (String item : entry) {
+//							System.out.print(item);
+//							System.out.print("+");
+//						}
+						System.out.println("");
 						addresses.add(new Address(entry));
 					}
 					System.out.println("Successfully loaded from " + fileName);
